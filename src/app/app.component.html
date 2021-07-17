@@ -1,0 +1,7 @@
+<div class="spinner-wrap" *ngIf="loadingSpinner">
+  <mat-spinner class="spiner-props" color="accent"></mat-spinner>
+</div>
+<div class="main-window" #mainWindow>
+  <app-nav-bar></app-nav-bar>
+  <router-outlet></router-outlet>
+</div>

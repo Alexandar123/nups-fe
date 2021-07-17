@@ -1,0 +1,46 @@
+.example-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  // .example-container > * {
+  //   width: 100%;
+  // }
+
+.location-props {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-props {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  margin-top: 35px;
+}
+
+.name {
+  position: absolute;
+}
+:host {
+  width: 100%;
+  height: 100%;
+  margin: 20px;
+
+}
+
+.type {
+  text-align: center;
+}
+
+.field-props {
+  width: 15% !important;
+  margin: 20px;
+}
+
+.apply-props {
+  margin-left: 10px;
+  background: #446b95 !important;
+
+}

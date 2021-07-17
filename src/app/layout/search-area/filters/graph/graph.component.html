@@ -1,0 +1,7 @@
+<button mat-button 
+*ngIf="name == 'rent-full-average-m2' || name == 'sell-full-average-m2'"
+(click)="openDialog()">Izmeni tip oglasa</button>
+<div #chartWrap class="chart-wrap">
+  <h3 class="type">{{typeOf | async}}</h3>
+  <canvas id="myChart" #chart class="chart-props"></canvas>
+</div>

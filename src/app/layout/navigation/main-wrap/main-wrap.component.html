@@ -1,0 +1,29 @@
+
+       <mat-grid-list cols="12" rowHeight="40px" gutterSize="15" #mn>
+            <mat-grid-tile class="panel" #num [colspan]="listingBreakpoint" [rowspan]="5"
+                [style.background]="'#ffffff'">
+                <app-listing [data]="main.addsData$ | async" [number]="main.numberOfAdds$ | async"
+                    type="number-of-found-list"></app-listing>
+                <mat-icon class="info-props" matTooltip="{{mainListing}}">info</mat-icon>
+            </mat-grid-tile>
+            <mat-grid-tile #loc class="panel location-panel" [colspan]="searchBreakpoint" [rowspan]="5" [style.background]="'#ffffff'">
+                <app-location [data]="main.addsData$ | async"></app-location>
+                <mat-icon class="info-props" (click)="openInfo()" matTooltip="Pretraži oglase po državi, gradu, kvadraturi.. Klik za više">info</mat-icon>
+            </mat-grid-tile>
+            <mat-grid-tile class="panel" #num [colspan]="listingBreakpoint" [rowspan]="5"
+                [style.background]="'#ffffff'">
+                <app-listing [data]="main.addsData$ | async" [number]="main.numberOfAdds$ | async"
+                    type="average-price-list"></app-listing>
+                <mat-icon class="info-props" matTooltip="{{averageListing}}">info</mat-icon>
+
+            </mat-grid-tile>
+            <mat-grid-tile class="panel" [colspan]="mapBreakpoint" [rowspan]="10" [style.background]="'#ffffff'">
+                <app-map [data]="main.addsData$ | async"></app-map>
+            </mat-grid-tile>
+            <mat-grid-tile class="panel" #num [colspan]="listingBreakpoint" [rowspan]="5"
+                [style.background]="'#ffffff'">
+                <app-listing [data]="main.addsData$ | async" [number]="main.numberOfAdds$ | async"
+                    type="median-price-list"></app-listing>
+                <mat-icon class="info-props" matTooltip="{{meadianListing}}">info</mat-icon>
+            </mat-grid-tile>
+</mat-grid-list>

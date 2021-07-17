@@ -1,0 +1,118 @@
+<div *ngIf="data.origin == 'users'">
+  <mat-form-field class="field-props">
+    <input
+      matInput
+      placeholder="Number of points"
+      value="0"
+      [(ngModel)]="type"
+      requred
+    />
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Ne hvala</button>
+    <button mat-button [mat-dialog-close]="type" cdkFocusInitial>Ok</button>
+  </div>
+</div>
+
+<div *ngIf="data.origin == 'adds'">
+  <h3>Upozorenje</h3>
+  <p>
+    Da li ste sigurni da želite da obrišete oglase sa netačnim podacima?, npm.
+    cena ili kvadratura 0
+  </p>
+  <button mat-button (click)="onNoClick()">Ne hvala</button>
+  <button mat-button (click)="setType('ok')" cdkFocusInitial>Ok</button>
+</div>
+
+<div *ngIf="data.origin == 'editAdd'">
+  <h3>Izabrani oglas</h3>
+  <mat-form-field class="field-props">
+    <input
+      matInput
+      placeholder="Država"
+      value="{{ data.data.state }}"
+      [(ngModel)]="data.data.state"
+    />
+  </mat-form-field>
+  <mat-form-field class="field-props">
+    <input
+      matInput
+      placeholder="Grad"
+      value="{{ data.data.city }}"
+      [(ngModel)]="data.data.city"
+    />
+  </mat-form-field>
+  <mat-form-field class="field-props">
+    <mat-label>Tip oglasa</mat-label>
+    <mat-select [(value)]="data.data.typeOfAd " requred>
+      <mat-option value="null">
+        None
+      </mat-option>
+      <mat-option value="rent">
+        Iznajmljivanje
+      </mat-option>
+      <mat-option value="sell">
+        Prodaja
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="field-props">
+    <mat-label>Tip imovine</mat-label>
+
+    <mat-select [(value)]="data.data.typeOfProperty" requred>
+      <mat-option value="null">
+        None
+      </mat-option>
+      <mat-option value="apartment">
+        Stan
+      </mat-option>
+      <mat-option value="house">
+        Kuća
+      </mat-option>
+      <mat-option value="land">
+        Zemljište
+      </mat-option>
+      <mat-option value="bussines_space">
+        Poslovni prostor
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="field-props">
+    <input
+      matInput
+      placeholder="Cena"
+      value="{{ data.data.price }}"
+      [(ngModel)]="data.data.price"
+    />
+  </mat-form-field>
+  <mat-form-field class="field-props">
+    <input
+      matInput
+      placeholder="Cena po m2"
+      value="{{ data.data.pricePerMeter }}"
+      [(ngModel)]="data.data.pricePerMeter"
+    />
+  </mat-form-field>
+  <mat-form-field class="field-props">
+    <input
+      matInput
+      placeholder="Aktivan"
+      value="{{
+        data.data.active == 1
+          ? 'aktivan'
+          : data.data.active == 0
+          ? 'neaktivan'
+          : 'invalid'
+      }}"
+      [(ngModel)]="activeStatus"
+    />
+  </mat-form-field>
+  <div class="actions-wrap">
+    <a mat-raised-button color="warn" (click)="deleteAdd(data.data.id)"
+      >Izbriši oglas</a
+    >
+    <a mat-raised-button color="primary" (click)="updateAdd(data.data)"
+      >Ažuriraj oglas</a
+    >
+  </div>
+</div>

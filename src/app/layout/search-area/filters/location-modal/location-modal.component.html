@@ -1,0 +1,31 @@
+<div *ngIf="data.origin == 'location'">
+    <p><b>Država</b> predstavlja državu u kojoj tražite oglase</p>
+    <p><b>Grad</b> predstavlja grad u kojem tražite oglase</p>
+    <p><b>Tip oglasa</b> predstavlja tip oglasa koji tražite, iznajmljivanje ili prodaja</p>
+    <p><b>Tip imovine</b> predstavlja tip imovine koju tražite npr. stan, kuća...</p>
+    <p><b>Min kvadratura</b> predstavlja minimalnu kvadratutu oglasa, ako je min i max kvadratura jednaka nuli(0) kvadratura se neće uzimatu u obrzir pri pretrazi</p>
+    <p><b>Max kvadratura</b> predstavlja maksimalnu kvadraturu oglasa</p>
+    <p><b>Početni datum</b> predstavlja početni datum za pretragu oglasa</p>
+    <p><b>Krajnji datum</b> predstavlja krajnji datum za pretragu oglasa</p>
+    <p><b>Sva polja osim min i max moraju biti popunjena</b></p>
+</div>
+
+<div *ngIf="data.origin == 'tables'">
+    <p><b>ID</b> predstavlja jedinstven ID oglasa</p>
+    <p><b>Selektuj</b> predstavlja akciju kojom evaluirate samo oglase koji su selektovani, moratu kliknuti evauluiraj selektovane da bi se akcija izvršila</p>
+    <p><b>Url</b> predstavlja link prema izvornom oglasu</p>
+    <p><b>Cena u evrima</b> predstavlja cenu iskazanu na oglasu</p>
+    <p><b>Cena po m2</b> predstavlja cenu po m2 iskazanu na oglasu</p>
+    <p><b>Kvadratura</b> predstavlja kvadraturu iskazanu u oglasu</p>
+    <p><b>Location</b> predstavlja the location of the property in add</p>
+    <p><b>Aktivnost</b> predstavlja aktivni status oglasa aktivan, neaktivan</p>
+    <p>Sa <b>Evaluiraj selektovane</b> možete evaluirati selektovane oglase, <b>možete selektovati maksimalno 5 oglasa</b> </p>
+    <p>Sa <b>Poništi selektovane</b> neće više biti selektovanih oglasa, aplikacija se vraća na stanje od prethodne pretrage</p>
+</div>
+
+<div *ngIf="data.origin == 'report'">
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="type" (click)="setType('report')">Izveštaj</button>
+        <button mat-button [mat-dialog-close]="type"  (click)="setType('active')">Aktivni oglasi</button>
+      </div>
+</div>

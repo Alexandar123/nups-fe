@@ -1,0 +1,119 @@
+.login {
+    font-size: 25px;
+    right: 0;
+    cursor: pointer;
+}
+
+.header {
+    justify-content: end;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.loged-in {
+    color: orange;
+}
+
+.user {
+    margin: 15px 10px 0px 0px !important; 
+}
+
+.icon-action {
+    padding: 5px;
+}
+
+.icon-action:hover {
+    cursor: pointer;
+}
+
+.mat-icon-button {
+    width: auto !important;   
+}
+
+.user-props {
+    font-size: 17px;
+}
+
+.mat-menu-content {
+    padding: 0px !important;
+}
+
+.spacer {
+    width: 100%;
+}
+
+.user-icon {
+    font-size: 85px;
+}
+
+.user-info-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 220px;
+    justify-content: flex-start;
+}
+
+.user-data {
+    margin-left: 60px;
+}
+
+.user-name {
+    opacity: 0.7;
+    background: black;
+    border-radius: 15px;
+    color: whitesmoke;
+    padding: 4px;
+}
+.user-name:hover {
+    cursor: pointer;
+}
+.actions-wrap {
+    text-align: center;
+}
+
+.logout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.logout-action {
+    margin-top: 18px;
+}
+
+.userCoins {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+
+.arow-props {
+    margin-top: 8px
+}
+
+.coins-val {
+    margin-right: -33px;
+    margin-top: -10px;
+}
+
+.person-props {
+    margin-top: 8px;
+    margin-right: 15px;
+}
+
+.export-icon:hover {
+    cursor: pointer;
+}
+
+.active-tab {
+    height: 40px;
+    width: 50%;
+}
+
+.active-tab h2 {
+    margin-top: 0px;
+}

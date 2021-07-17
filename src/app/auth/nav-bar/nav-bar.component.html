@@ -1,0 +1,32 @@
+<header class="header">
+    <a *ngIf="!superUser && authenticated" mat-icon-button (click)="openInfo(but)" class="user-props export-icon" #but [disabled]="activeFilter == undefined">
+        <mat-icon class="export-icon" matTooltip="Kreiraj izveštaj od trenutnih podataka(potrebno je uraditi pretragu)">description</mat-icon>
+    </a>
+    <div class="spacer"></div>
+    <mat-menu #appMenu="matMenu" class="menu-items">
+        <div class="user-info-wrap">
+            <div><mat-icon class="user-icon">person</mat-icon></div>
+            <div class="user-data" *ngIf="currentUser">
+                <p>{{currentUser.other.name}} {{currentUser.other.lastname}}</p>
+                <p  class="user-name" (click)="showMoreUserInfo()">Show more</p>
+            </div>
+        </div>
+        <div class="actions-wrap">
+            <hr>
+            <div  *ngIf="!authenticated">
+                <p class="icon-action" (click)="auth.login()" *ngIf="!authenticated">Prijavi se</p>
+            </div>
+            <div class="logout" *ngIf="authenticated"  (click)="auth.logout()">
+                <p class="icon-action" >Odjavi se</p>
+            </div>
+        </div>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu" class="user-props">
+        <div class="userCoins">
+            <span class="coins-val">{{coins$ | async}}</span>
+            <mat-icon class="person-props">person</mat-icon>
+            {{auth.currentUser$ | async}}
+            <mat-icon class="arow-props">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+</header>

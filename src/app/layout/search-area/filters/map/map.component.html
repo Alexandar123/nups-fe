@@ -1,0 +1,8 @@
+<div leaflet style="height: 532px;" id="map" leafletDraw 
+[leafletMarkerCluster]="markerClusterData"
+[leafletMarkerClusterOptions]="markerClusterOptions"
+(leafletMarkerClusterReady)="markerClusterReady($event)"
+[leafletOptions]="options" [leafletDrawOptions]="drawOptions"
+    (leafletMapReady)="drawCreated($event)">
+  <div *ngFor="let l of layers" [leafletLayer]="l"></div>
+</div>

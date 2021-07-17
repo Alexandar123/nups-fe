@@ -1,0 +1,30 @@
+<div class="win-wrap">
+  <div class="menu-icon-wrap" *ngIf="!navbarVisibilty" >
+      <mat-icon (click)="showMenu(nav)" class="menu-icon" matTooltip="Make a report of available data(you need to make a search first)">
+          menu</mat-icon>
+  </div>
+  <div class="navigation" #nav
+      [ngClass]="{'navigation-hidden': !navbarVisibilty, 'navigation-displayed': navbarVisibilty}">
+      <div class="logo" >
+          <p [ngStyle]="{'visibility': !navbarVisibilty ? 'hidden' : 'visible'}">Dobrodošli</p>
+          <hr class="line-props">
+      </div>
+      <div class="nav-wrapper">
+          <div class="nav-item" (click)="showHideElements(nav, 'users')">
+              <mat-icon class="nav-icon" matTooltip="Users">supervisor_account</mat-icon>
+              <p>Korisnici</p>
+              <div class="arrow-left"></div>
+          </div>
+          <div class="nav-item" (click)="showHideElements(nav, 'adds')">
+              <mat-icon class="nav-icon" matTooltip="Tabs">view_list</mat-icon>
+              <p>Oglasi</p>
+              <div class="arrow-left"></div>
+          </div>
+
+      </div>
+  </div>
+  <div class="geo-items" [ngClass]="{'items-full': !navbarVisibilty}" #items>
+    <app-adds-tab *ngIf="addsTab"></app-adds-tab>
+    <app-users-tab *ngIf="usersTab"></app-users-tab>
+  </div>
+</div>

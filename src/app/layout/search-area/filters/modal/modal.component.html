@@ -1,0 +1,10 @@
+<div class="type-props">
+    <button mat-raised-button (click)="setType('bar')">Bar</button>
+    <button mat-raised-button (click)="setType('chart')">Chart</button>
+    <button mat-raised-button (click)="setType('line')">Line</button>
+</div>
+
+<div mat-dialog-actions>
+        <button mat-raised-button (click)="onNoClick()">Ne hvala</button>
+        <button mat-raised-button [mat-dialog-close]="type" cdkFocusInitial>Ok</button>
+      </div>

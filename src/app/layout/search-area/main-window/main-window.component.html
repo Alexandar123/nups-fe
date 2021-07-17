@@ -1,0 +1,39 @@
+<div class="win-wrap" (window:resize)="windowAdapt()">
+    <div class="menu-icon-wrap" *ngIf="!navbarVisibilty" >
+        <mat-icon (click)="showMenu(nav)" class="menu-icon" matTooltip="Napravi izveštaj od trenutnih podataka(prvo morate pretražiti oglase)">
+            menu</mat-icon>
+    </div>
+    <div class="navigation" #nav [ngStyle]="{'minHeight.px': calcHeight(mainTab, graphsTab, tablesTab) + 92}"
+        [ngClass]="{'navigation-hidden': !navbarVisibilty, 'navigation-displayed': navbarVisibilty}">
+        <div class="logo" >
+            <p [ngStyle]="{'visibility': !navbarVisibilty ? 'hidden' : 'visible'}">Dobrodošli</p>
+            <p [ngStyle]="{'visibility': !navbarVisibilty ? 'hidden' : 'visible'}" class="user-nickname">{{auth.currentUser$ | async}}</p>
+            <hr class="line-props">
+        </div>
+        <div class="nav-wrapper">
+            <div class="nav-item" (click)="showHideElements(nav, 'main')">
+                <mat-icon class="nav-icon" matTooltip="Main dashboard">account_balance</mat-icon>
+                <p>Glavni prikaz</p>
+                <div class="arrow-left"></div>
+            </div>
+            <div class="nav-item" (click)="showHideElements(nav, 'graphs')">
+                <mat-icon class="nav-icon" matTooltip="Only graphs">timeline</mat-icon>
+                <p>GRAFICI</p>
+                <div class="arrow-left"></div>
+            </div>
+            <div class="nav-item" (click)="showHideElements(nav, 'tables')">
+                <mat-icon class="nav-icon" matTooltip="Only tables">table</mat-icon>
+                <p>TABELE</p>
+                <div class="arrow-left"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="geo-items" [ngClass]="{'items-full': !navbarVisibilty}" #items>
+        <app-main-wrap #mainTab></app-main-wrap>
+        <app-graphs 
+         #graphsTab></app-graphs>
+        <app-tables
+         #tablesTab></app-tables>
+    </div>
+</div>

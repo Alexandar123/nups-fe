@@ -1,0 +1,81 @@
+<div class="example-container">
+    <div class="user-wrap">
+      <div>
+          <button mat-button (click)="exportUsers()" [disabled]="dataSource.data.length == 0">Eksportuj korisnike</button>
+  
+      </div>
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" id="matTable">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell class="tab-item" *matCellDef="let element" (click)="setActiveUser(element)"> {{element.id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name" >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ime </th>
+          <td mat-cell class="tab-item" *matCellDef="let element" (click)="setActiveUser(element)"> {{element.name}}</td>
+        </ng-container>
+  
+        <!-- Name Column -->
+        <ng-container matColumnDef="lastname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Prezime </th>
+          <td mat-cell class="tab-item" *matCellDef="let element" (click)="setActiveUser(element)"> {{element.lastname}} </td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell class="tab-item" *matCellDef="let element" (click)="setActiveUser(element)"> {{element.email}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Grad </th>
+          <td mat-cell class="tab-item" *matCellDef="let element" (click)="setActiveUser(element)"> {{element.city}} </td>
+        </ng-container>
+  
+        <!-- Weight Column -->
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Država </th>
+          <td mat-cell class="tab-item" *matCellDef="let element" (click)="setActiveUser(element)"> {{element.country}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="mobile">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Broj telefona </th>
+          <td mat-cell class="tab-item" *matCellDef="let element" (click)="setActiveUser(element)"> {{element.mobile}} </td>
+        </ng-container>
+        <ng-container matColumnDef="points">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Poeni </th>
+          <td mat-cell class="tab-item" *matCellDef="let element" (click)="setActiveUser(element)"> {{element.points}} </td>
+        </ng-container>
+        <ng-container matColumnDef="points expiration">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Rok isticanja poena</th>
+          <td mat-cell class="tab-item" *matCellDef="let element" (click)="setActiveUser(element)"> {{element.coins_expiration}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+      <div *ngIf="currentUser$ | async" class="active-user">
+        <h3>Selektovani korisnik</h3>
+        <mat-form-field class="field-props">
+          <input matInput placeholder="Name" value="{{activeUser.name}}" [(ngModel)]="activeUser.name">
+        </mat-form-field>
+        <mat-form-field class="field-props">
+          <input matInput placeholder="Last name" value="{{activeUser.lastname}}" [(ngModel)]="activeUser.lastname">
+        </mat-form-field>
+        <mat-form-field class="field-props">
+          <input matInput placeholder="Phone number" value="{{activeUser.mobile}}" [(ngModel)]="activeUser.mobile">
+        </mat-form-field>
+        <mat-form-field class="field-props">
+            <input matInput placeholder="Country" value="{{activeUser.city}}" [(ngModel)]="activeUser.city">
+          </mat-form-field>
+        <mat-form-field class="field-props">
+          <input matInput placeholder="Country" value="{{activeUser.country}}" [(ngModel)]="activeUser.country">
+        </mat-form-field>
+        <mat-form-field class="field-props">
+          <input matInput placeholder="Email" value="{{activeUser.email}}" disabled>
+        </mat-form-field>
+        <div class="actions">
+          <a mat-raised-button (click)="openDialog()">Dodaj poene</a>
+          <a mat-raised-button (click)="updateActive(activeUser.id)">Ažuriraj korisnika</a>
+          <a mat-raised-button (click)="deleteUser(activeUser.id, activeUser.auth_id)">Izbriši korisnika</a>
+        </div>
+      </div>  
+    </div>

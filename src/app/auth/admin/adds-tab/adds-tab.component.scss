@@ -1,0 +1,27 @@
+.field-props:nth-last-of-type(1) {
+    margin-left: 20px;
+}
+
+.apply-props {
+    margin-left: 20px;
+}
+
+.delete-props{
+    margin-left: 20px;
+}
+.table-wrap {
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.mat-sort-header-container {
+    align-items: center;
+  }
+
+.adds {
+    cursor: pointer;
+}
+.name {
+    text-transform: capitalize;
+}

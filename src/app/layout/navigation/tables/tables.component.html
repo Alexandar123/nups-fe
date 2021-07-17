@@ -1,0 +1,8 @@
+<mat-grid-list class="tabs-prop" cols="12" rowHeight="40px" gutterSize="15" #tb>
+    <mat-grid-tile *ngIf="(main.addsData$ | async).length > 0" #table class="panel table-panel" [colspan]="12" [rowspan]="7"
+    [style.background]="'#ffffff'">
+    <mat-icon class="info-props" (click)="openInfo()" matTooltip="{{graph.chosedAddOrigin$ | async}} tabela, klik za više informacija">info</mat-icon>
+        <app-table [data]="main.addsData$ | async" [number]="main.numberOfAdds$ | async" name="sell">
+        </app-table>
+    </mat-grid-tile>
+</mat-grid-list>

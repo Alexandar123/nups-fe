@@ -1,0 +1,70 @@
+<h3 class="type">Pretraga oglasa</h3>
+<div class="location-props" #wrap>
+  <form #form (keydown.enter)="$event.preventDefault()">
+  <div class="name">{{name}}</div>
+  <div class="example-container">
+      <mat-form-field class="field-props">
+          <input matInput placeholder="State" name="state" [(ngModel)]="state" requred>
+        </mat-form-field>
+    <mat-form-field class="field-props">
+      <input matInput placeholder="Grad" [(ngModel)]="town" name="town" requred>
+    </mat-form-field>
+    <mat-form-field class="field-props">
+      <mat-label>Tip oglasa</mat-label>
+      <mat-select [(value)]="selectedRentSell" name="selectedRentSell" requred>
+        <mat-option value="null">
+          None
+        </mat-option>
+        <mat-option value="rent">
+          Iznajmljivanje
+        </mat-option>
+        <mat-option value="sell">
+          Prodaja
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="field-props">
+      <mat-label>Tip imovine</mat-label>
+      <mat-select [(value)]="selectedPropType" name="selectedPropType" selected="apartment" requred>
+        <mat-option value="null">
+          None
+        </mat-option>
+        <mat-option value="apartment">
+          Stan
+        </mat-option>
+        <mat-option value="house">
+          Kuća
+        </mat-option>
+        <mat-option value="land">
+          Zemljište
+        </mat-option>
+        <mat-option value="bussines_space">
+          Poslovni prostor
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="field-props">
+      <input matInput placeholder="Min kvadratura" type="number" value="0" name="minSqare" [(ngModel)]="minSqare" requred min="0" (focusout)="checkIfEmpty(minSqare, 'min')" #minEl>
+    </mat-form-field>
+    <mat-form-field class="field-props">
+      <input matInput placeholder="Max kvadratura" type="number" value="0" name="maxSqare"  [(ngModel)]="maxSqare" requred min="0" (focusout)="checkIfEmpty(maxSqare, 'max')" #maxEl>
+    </mat-form-field>
+    <mat-form-field class="field-props">
+      <input matInput name="start" [matDatepicker]="start" placeholder="Početni datum" (dateChange)="dateChange($event, 'start')" requred>
+      <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+      <mat-datepicker #start></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="field-props">
+      <input matInput [matDatepicker]="end" name="end" placeholder="Krajnji datum" (dateChange)="dateChange($event, 'end')" requred>
+      <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+      <mat-datepicker #end></mat-datepicker>
+    </mat-form-field>
+
+    <div class="button-props">
+      <div><button mat-raised-button color="primary" (click)="removeLocation(form)" [disabled]="!authenticated || (inProgress$ | async)" class="clear-data">Očisti</button></div>
+      <div><button mat-raised-button color="primary" (click)="setLocation()" [disabled]="!authenticated || (inProgress$ | async)" class="apply-props">Pretraži</button></div>
+    </div>
+  </div>
+</form>
+</div>

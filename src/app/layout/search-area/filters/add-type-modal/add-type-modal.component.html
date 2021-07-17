@@ -1,0 +1,28 @@
+<div class="type-props" *ngIf="data.name != 'rent-sell' && data.origin == undefined">
+  <button mat-button (click)="setType('Apartment')">Apartman</button>
+  <button mat-button (click)="setType('House')">Kuća</button>
+  <button mat-button (click)="setType('Land')">Zemljište</button>
+</div>
+
+<div class="type-props" *ngIf="data.name == 'rent-sell'">
+  <button mat-button (click)="setType('Rent')">Iznajmljivanje</button>
+  <button mat-button (click)="setType('Sell')">Prodaja</button>
+</div>
+<div *ngIf="data.origin == 'date'">
+  <mat-form-field class="field-props">
+    <input matInput [matDatepicker]="start" placeholder="Početni datum" (dateChange)="dateChange($event, 'start')"
+      requred>
+    <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+    <mat-datepicker #start></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="field-props">
+    <input matInput [matDatepicker]="end" placeholder="Krajnji datum" (dateChange)="dateChange($event, 'end')" requred>
+    <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+    <mat-datepicker #end></mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Ne hvala</button>
+  <button mat-button [mat-dialog-close]="type" cdkFocusInitial>Ok</button>
+</div>

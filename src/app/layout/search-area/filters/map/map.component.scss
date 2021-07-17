@@ -1,0 +1,53 @@
+
+
+:host {
+    width: 100%;
+    height: 100%;
+    margin: 10px 20px 10px 20px;
+  }
+
+.container {
+  height: 500px;
+  width: 100%;
+  margin-left: -1px;
+  margin-top: 18px;
+}
+
+::ng-deep .leaflet-tooltip-pane .text {
+  font-weight: bold;
+  background: transparent;
+  border:0;
+  box-shadow: none;
+}
+
+
+#map {
+  height: 600px;
+}
+ 
+
+::ng-deep .leaflet-draw-toolbar {
+  width: 25px;
+}
+
+::ng-deep .legend {
+  line-height: 18px;
+  color: #555;
+  background-color: whitesmoke;
+}
+::ng-deep .legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  border-radius: 20px;
+}
+
+::ng-deep .info {
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .leaflet-left {
+  z-index: 999 !important;
+}

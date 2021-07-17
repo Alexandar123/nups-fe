@@ -1,0 +1,40 @@
+
+table {
+    width: 100%;
+  }
+  
+:host {
+  overflow: hidden;
+}
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  :host {
+      width: 100% !important;
+  }
+  :host {
+    width: 100%;
+    height: 100%;
+  }
+
+  .type {
+    text-align: center;
+  }
+
+  ::ng-deep .mat-header-cell {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  ::ng-deep  .mat-cell {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  input[disabled] {pointer-events:none}
+
+  .table-wrap {
+    height: 75%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }

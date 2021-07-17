@@ -1,0 +1,7 @@
+<div class="listing-wrap" id="listing" #list>
+    <h1 *ngIf="type == 'number-of-found-list'" class="listing">{{count || 0}} <span *ngIf="type != 'number-of-found-list'">€</span></h1>
+    <h1 *ngIf="type != 'number-of-found-list'" class="listing">{{count | currency:'EUR' }}</h1>
+
+    <h3 class="type-of" >{{typeOfListing}}</h3>
+</div>
+

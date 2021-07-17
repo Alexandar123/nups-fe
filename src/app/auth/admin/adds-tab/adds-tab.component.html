@@ -1,0 +1,78 @@
+<div>
+  <h3>Pretraži oglase</h3>
+  <mat-form-field class="field-props">
+    <input matInput [matDatepicker]="start" placeholder="Izaberi početni datum"
+      (dateChange)="dateChange($event, 'start')" requred>
+    <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+    <mat-datepicker #start></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="field-props">
+    <input matInput [matDatepicker]="end" placeholder="Izaberi krajnji datum" (dateChange)="dateChange($event, 'end')"
+      requred>
+    <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+    <mat-datepicker #end></mat-datepicker>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="searchAdds()" class="apply-props">Pretraži</button>
+  <button mat-raised-button color="warn" (click)="openDialog('adds')" class="delete-props">Izbriši oglase</button>
+</div>
+<div [hidden]="dataSource.data.length == 0" class="table-wrap">
+  <table mat-table [dataSource]="sortedData" (matSortChange)="sortData($event)" matSort class="mat-elevation-z8"
+    id="matTable">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id oglasa</th>
+      <td class="adds" (click)="editAdd(element)" mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="url">
+      <th mat-header-cell *matHeaderCellDef> Url </th>
+      <td (click)="editAdd(element)" mat-cell *matCellDef="let element"> <a href="element.url"
+          (click)="openAdd(element.url, $event)">{{element.url | slice:0:40}}...</a></td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena u evrima </th>
+      <td class="adds" (click)="editAdd(element)" mat-cell *matCellDef="let element">
+        {{element.price == 0 ? 'missing' : element.price | currency:'EUR'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price_per">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena po m2 </th>
+      <td class="adds" (click)="editAdd(element)" mat-cell *matCellDef="let element">
+        {{element.pricePerMeter == 0 ? 'missing': element.pricePerMeter | currency:'EUR'}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="area">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Broj kvadrata </th>
+      <td class="adds" (click)="editAdd(element)" mat-cell *matCellDef="let element"> {{element.areas}} </td>
+    </ng-container>
+    <ng-container matColumnDef="type_of_prop">
+      <th mat-header-cell *matHeaderCellDef> Tip imovine </th>
+      
+      <td class="adds" (click)="editAdd(element)" mat-cell *matCellDef="let element">
+        {{element.typeOfProperty != 'null' ? element.typeOfProperty : 'no data' }} </td>
+    </ng-container>
+    <ng-container matColumnDef="typeOfAd">
+      <th mat-header-cell *matHeaderCellDef> Tip oglasa </th>
+      <td class="adds" (click)="editAdd(element)" mat-cell *matCellDef="let element"> {{element.typeOfAd}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateAdded">
+      <th mat-header-cell *matHeaderCellDef> Lokacija </th>
+      <td class="adds name" (click)="editAdd(element)" mat-cell *matCellDef="let element"> {{element.city}} <span *ngIf="element.street.length > 0">,</span>  {{element.street}}</td>
+    </ng-container>
+    <ng-container matColumnDef="addActive">
+      <th mat-header-cell *matHeaderCellDef> Aktivnost </th>
+      <td class="adds" (click)="editAdd(element)" mat-cell *matCellDef="let element">
+        {{element.active == 1 ? 'aktivan' : element.active == 0 ? 'neaktivan' : 'invalid' }} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<pagination *ngIf="dataSource.data.length > 0" [maxSize]="4" [totalItems]="(data.pages$ | async) * 10" (pageChanged)="pageChanged($event)"></pagination>
+<div *ngIf="dataSource.data.length == 0">
+  <h3>Uradite pretragu da bi prikazali podatke</h3>
+</div>

@@ -1,0 +1,22 @@
+
+        <mat-grid-list class="tabs-prop" cols="12" rowHeight="40px" gutterSize="15">
+            <mat-grid-tile *ngIf="(main.addsData$ | async).length" #rentGraph class="panel" [colspan]="graphBreakpoint"
+                [rowspan]="9" [style.background]="'#ffffff'">
+                <app-graph [data]="main.addsData$ | async" [number]="main.numberOfAdds$ | async" name="sell-median" #gr>
+                </app-graph>
+                <mat-icon class="info-props" matTooltip='Prosečna {{graph.chosedAddOrigin$ | async}} cena po m2 za trenutnu pretragu'>info</mat-icon>
+                <button class="expand-down" mat-button matTooltip="Jedan klik proširuje, dva klika vraćaju na inicijalno"
+                    (dblclick)="rentGraph.colspan = 6"
+                    (click)="rentGraph.colspan = 12;">proširi</button>
+                <p class=""></p>
+            </mat-grid-tile>
+            <mat-grid-tile *ngIf="(main.addsData$ | async).length" #medianGraph class="panel"
+                [colspan]="graphBreakpoint" [rowspan]="9" [style.background]="'#ffffff'">
+                <app-graph [data]="main.addsData$ | async" [number]="main.numberOfAdds$ | async" name="rent-median"
+                    #grm></app-graph>
+                <mat-icon class="info-props" matTooltip="Medijan {{graph.chosedAddOrigin$ | async}} cena po m2 za trenutnu pretragu">info</mat-icon>
+                <button class="expand-down" mat-button matTooltip="Jedan klik proširuje, dva klika vraćaju na inicijalno"
+                    (dblclick)="medianGraph.colspan = 6"
+                    (click)="medianGraph.colspan = 12;">proširi</button>
+            </mat-grid-tile> 
+        </mat-grid-list>
